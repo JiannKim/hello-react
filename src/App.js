@@ -1,13 +1,18 @@
 import './App.css';
 
+// 2.4.6 인라인 스타일링
 function App() {
-  // 리액트 컴포넌트에서는 함수에서 undefined만 반환하여 렌더링하는 상황은 만들면 안된다.
-  // 아래와 같은 코드는 아무것도 렌더링하지 않으려면 null을 반환하라는 에러문구가 뜬다.
-  const name = undefined;
-  // 아래 코드처럼 or 연산자를 사용하면 해당 값이 undefined일 때 사용 할 값을 지정해줌으로써 간단히 오류 방지가 가능하다.
-  return name || '값이 undefined입니다.';
-  // 반면에 jsx 내부에 렌더링은 가능하다.
-  // return <div>{name}</div>
+  const name = '리액트';
+  const style = {
+    backgroundColor: 'black', // background-color와 같은 경우 - 가 사라지고 카멜 표기법(camelCase)으로 작성한다.
+    color: 'aqua',
+    fontSize: '48px', // font-size -> fontSize
+    fontWeight: 'bold', // font-weight -> fontWeight
+    padding: 16 // 단위 생략시 px로 지정된다.
+  }
+  return <div style={style}>{name}</div>;
+  // 만일 스타일 객체를 미리 선언하지않고 바로 지정하고 싶다면 div의 style 값에 직접 지정하는 방법이 있다.
+  // ex) style = {{color: red, fontSize: 20}}
 }
 
 export default App;
