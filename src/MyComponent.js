@@ -1,18 +1,34 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 // 3.3 props
-// 3.3.6 propTypes를 통한 props 검증
-const MyComponent = ({ name, children, favoriteNumber }) => {
-  return (
-    <div>
-      안녕하세요. 저는 {name} 이예요. <br />
-      저는 {children} 이예요.
-      <br />
-      제가 좋아하는 숫자는 {favoriteNumber}예요.
-    </div>
-  );
-};
+// 3.3.7 클래스형 컴포넌트에서 props 사용하기
+class MyComponent extends Component {
+  // 클래스 내부에서 defualtProps와 propTypes 사용이 가능하다.
+  static defaultProps = {
+    name: '기본 이름',
+  };
+  static propTypes = {
+    name: PropTypes.string,
+    favoriteNumber: PropTypes.number.isRequired,
+  };
+  // defaultProps와 propTypes는 꼭 사용해야 하나?
+  // 이 두가지 설정은 컴포넌트 필수 사항이 아니다. 그러므로 반드시 사용할 필요가 있는것은 아니다.
+  // 하지만 react를 사용하여 큰 규모의 프로젝트를 진행하거나 다른 개발자들과의 협업을 한다면
+  // 해당 컴포에 어떤 props가 필요한지 쉽게 알 수 있기에 개발 능률이 좋아지는 것이다.
+
+  render() {
+    const { name, children, favoriteNumber } = this.props; // 비구조화 할당
+    return (
+      <div>
+        안녕하세요. 저는 {name} 이예요. <br />
+        저는 {children} 이예요.
+        <br />
+        제가 좋아하는 숫자는 {favoriteNumber}예요.
+      </div>
+    );
+  }
+}
 
 // 3.3.3 props 기본값 설정: defaultProps (* App.js 참조)
 // 기본값을 설정 할 때는 아래 코드와 같이 작성한다.
