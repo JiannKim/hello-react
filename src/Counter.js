@@ -13,24 +13,24 @@ import React, { Component } from 'react';
 // - 클래스형 컴포넌트에서 사용하는 state
 // - 함수형 컴포넌트에서의 useState라는 함수를 통해 사용하는 state
 class Counter extends Component {
-  // 아래 코드와 같이 constructor를 사용하여 state를 설정할 수 있다.
-  constructor(props) {  // constructor는 컴포넌트의 생성자 메서드이다.
-    super(props); // 클래스형 컴포에서 constructor를 작성할 때는 반드시 super(props)를 호출해 주어야 한다.
-    // state의 초깃값 설정
-    this.state = {  // 컴포넌트의 state는 객체 형태여야 한다.
-      number: 0,
-    };
-  }
+  // 3.4.1.2 state를 constructor에서 꺼내기
+  // 아래와 같이 하면 constructor 메서드를 선언하지 않고도 state 초깃값을 설정할 수 있다. (이후로는 이방식을 사용)
+  state = {
+    number: 0,
+    fiexdNumber: 0,
+  };
   render() {
-    const { number } = this.state; // state를 조회할 때는 this.state로 조회한다.
+    // 3.4.1.1 state 객체 안에 여러값이 있을 때
+    const { number, fiexdNumber } = this.state; // state를 조회할 때는 this.state로 조회한다.
     return (
       <div>
         <h1>{number}</h1>
+        <h2>바뀌지 않는 값: {fiexdNumber}</h2>
         <button
           style={{ cursor: 'pointer' }}
           onClick={() => {  // onClick(이벤트) props는 클릭시 호출될 함수를 설정할 수 있게 해준다.
             // this.setState를 사용하여 state에 새로운 값을 넣을 수 있다. (state값을 바꿀 수 있게 해줌)
-            this.setState({ number: number + 1 });
+            this.setState({ number: number + 1 });  // setState 함수는 안자로 전달된 객체 안에 들어있는 값만 바꾼다.
           }}
         >
           +1
