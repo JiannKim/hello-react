@@ -1,15 +1,21 @@
 import './App.css';
 
-// 2.4.8 꼭 닫아야 하는태그 그리고 주석
+// 2.5 ESLint와 Prettier 적용하기
+// f1 누르고 Format Document 선택
+// p. 82를 참고하여 아래 코드와 같이 prettierrc 파일을 만들어 원하는 설정을 할 수 있다.
+// {
+//   "singleQuote": true,
+//   "semi": true,
+//   "useTabs": false,
+//   "tabWidth": 2
+// }
 function App() {
-  const name = '리액트'
+  const name = '리액트';
   return (
-  <div className='react'>
-    {name}
-    {/* <input> 닫지않으면 오류 발생 */}
-    {/* 아래와 같이 작성해야 한다. */}
-    <input /> 
-  </div>
+    <div className="react">
+      {name}
+      <input>this</input>
+    </div>
   );
 }
 
