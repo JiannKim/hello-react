@@ -29,32 +29,22 @@ class Counter extends Component {
         <button
           style={{ cursor: 'pointer' }}
           onClick={() => {
-            // 3.4.1.3 this.setState에 객체 대신 함수 인자 전달하기
-            //-----------------------------------------------------------------------//
-            // this.setState를 사용하여 state값을 업데이트할 때는 비동기적으로 상태가 업데이트 된다. //
-            //-----------------------------------------------------------------------//
-            // 만일 아래 코드를 추가한다고 해도 버튼을 클릭할 때 숫자는 1씩 더해 진다.
-            // this.setState를 사용한다고 해서 state값이 바로 바뀌지는 않기 때문이다. (비동기)
-            // this.setState({nunber: this.state.number + 1});
+            // 3.4.1.4 this.setState가 끝난 후 특정 작업 실행하기
+            console.log(this.state, 'onClick 실행');  // 실제 state값 확인
 
-            // 이에 대한 해결책은 this.setState를 사용할 때 객체 대신 함수를 인자로 넣어주면 된다.
-            // 예: this.setState((prevState, props) => { // prevState -> 기존상태 , props -> 현재 지닌 props (이과정에서 props가 필요 없다면 생략 가능하다.)
-            
-            // this.setState((prevState) => {
-            //   return {
-            //     // 업데이트할 내용
-            //     number: prevState.number + 1,
-            //   };
-            // });
+            this.setState(
+              {
+                number: number + 1,
+              },
+              // setState를 사용하여 값을 업데이트하고 난 다음 특정 작업을 하고 싶을 때는
+              // setState의 두 번째 파라미터로 콜백 함수를 등록하여 작업을 처리할 수 있다.
 
-            // 위 코드와 아래 코드는 완전히 똑같은 기능을 갖는다.
-            // 아래의 코드는 함수에서 바로 객체를 반환한다는 의미이다.
-            this.setState((prevState) => ({
-              number: prevState.number + 1,
-            }));
-
-            // 두 번째로 this.setState 함수를 사용할 때는 바로 객체를 반환하도록 했기 때문에 prevState => ({}) 형태로 작성되었다.
-            // 숫자는 2씩 증가한다.
+              // 아래 코드는 setState의 두 번째 파라미터 (콜백 함수)
+              () => {
+                console.log('방금 setState가 호출되었습니다.');
+                console.log(this.state, 'setState 함수 실행');  // setState 함수 실행 후 state값 확인
+              }
+            );
           }}
         >
           +1
