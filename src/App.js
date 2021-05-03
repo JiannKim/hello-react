@@ -1,10 +1,16 @@
 import './App.css';
 
-// 2.4.7 class 대신 className
-// react v16부터는 class를 className으로 변환시켜주고 경고를 띄운다.
+// 2.4.8 꼭 닫아야 하는태그 그리고 주석
 function App() {
   const name = '리액트'
-  return <div className='react'>{name}</div>
+  return (
+  <div className='react'>
+    {name}
+    {/* <input> 닫지않으면 오류 발생 */}
+    {/* 아래와 같이 작성해야 한다. */}
+    <input /> 
+  </div>
+  );
 }
 
 export default App;
