@@ -16,11 +16,21 @@ import React, { useState } from 'react';
 // const [one, two] = array;
 
 // 3.4.2.2 useState 사용하기
+//--------------------------------------------------------------------//
+//  useState 함수의 인자에는 상태의 초깃값을 넣고,                             //
+//  클래스형 컴포 state 초깃값은 객체 형태를 넣어야한다.                         //
+//  하지만 useState에서는 반드시 객체가 아니어도 된다.                          //
+//  값의 형태는 자유이다. 배열, 객체, 문자, 숫자 등등..                          //
+//  함수를 호출하면 배열이 반환된다.                                          //
+//  배열의 첫 번째 원소는 현상태이고, 두 번째는 상태를 바꾸어주는 setter 함수이다.     //
+//  배열 비구조화 할당을 통해 이름을 자유롭게 지정해 줄 수 있다.                    //
+//--------------------------------------------------------------------//
+
 const Say = () => {
   const [message, setMessage] = useState('');
   const onClickEnter = () => setMessage('안녕하세요.');
   const onClickLeave = () => setMessage('안녕히 가세요.');
-  
+
   // 3.4.2.3 한 컴포넌트에서 useState 여러 번 사용하기
   const [color, setColor] = useState('black');
 
