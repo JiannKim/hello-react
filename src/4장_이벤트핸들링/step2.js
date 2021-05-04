@@ -14,3 +14,4 @@
 
 // 4.2.4 input 여러개 다루기 (* EventPractice.js 참조)
 
+// 4.2.5 onKeyPress 이벤트 핸들링 (* EventPractice.js 참조)
