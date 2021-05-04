@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 class EventPractice extends Component {
   // 4.2.2.2 state에 input값 담기
   state = {
+    username: '',
     message: '',
   };
 
@@ -18,15 +19,29 @@ class EventPractice extends Component {
   // 새 메서드를 만들 때마다  constructor도 수정해야 하기 때문이다.
   // 이 작업을 더 간단하게 하는 방법으로는 바벨의 transform-class-properties 문법을 사용하여
   // 화살표 함수 형태로 메서드를 정의하는 것이다.
+
+  // 4.2.4 input 여러 개 다루기
+  // 핵심 코드
   handleChange = (e) => {
     this.setState({
-      message: e.target.value,
+      [e.target.name]: e.target.value,
     });
   };
+  // 위의 코드 처럼 객체 안에서 key를 []로 감싸면 그 안에 넣은 레퍼런스가 가리키는 실제 값이 key값으로 사용된다.
+  // 예시 코드
+  // const name = 'variantKey';
+  // const object = {
+  //   [name]: 'value'
+  // };
+  // 결과
+  // {
+  //   'variantKey': 'value'
+  // }
 
   handleClick = (e) => {
-    alert(this.state.message);
+    alert(this.state.username + ': ' + this.state.message);
     this.setState({
+      username: '',
       message: '',
     });
   };
@@ -35,6 +50,13 @@ class EventPractice extends Component {
     return (
       <div>
         <h1>이벤트 실습</h1>
+        <input
+          type="text"
+          name="username"
+          placeholder="사용자명 입력..."
+          value={this.state.username}
+          onChange={this.handleChange}
+        />
         <input
           type="text"
           name="message"
