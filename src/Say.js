@@ -52,4 +52,38 @@ const Say = () => {
   );
 };
 
+// 3.5 state를 사용할 때 주의 사항
+// 어디에서든 state를 사용할 때는 주의 사항이 있다.
+// 값을 바꾸어야 할 때는 setState 혹은 useState를 통해 전달받은 세터(setter) 함수를 사용해야 합니다.
+
+// 아래 코드들은 잘못된 코드이다.
+// 클래스형 컴포에서...
+// this.state.number = this.state.number + 1;
+// this.state.array = this.array.push(2);
+// this.state.object.value = 5;
+
+// 함수형 컴포넌트에서...
+// const [object, setObject] = useState({ a: 1, b: 1 });
+// object.b = 2;
+
+// 배열이나 객체를 업데이트 할 때는 배열이나 객체 사본을 만들고 사본의 값을 업데이트한 후에
+// 사본의 상태를 useState 혹은 세터 함수를 통해 업데이트한다. 아래 예시 참고
+
+// 객체
+// const object = { a: 1, b: 2, c: 3 };
+// const nextObject = { ...object, b: 2 }; // 사본을 만들어서 b의 값만 덮어 쓰기
+
+// 배열
+// const array = [
+//   { id: 1, value: true },
+//   { id: 2, value: true },
+//   { id: 3, value: false },
+// ];
+// let nextArray = array.concat({ id: 4 }); // 새 항목 추가
+// nextArray.fileter((item) => item.id !== 2); // id가 2인 항목을 제거
+// nextArray.map((item) => (item.id === 1 ? { ...item, value: false } : item));
+
+// 객체 사본을 만들 때는 spread 연산자(...)를 사용하여 처리하고,
+// 배열 사본을 만들 때는 배열의 내장 함수들인 filter나 map을 사용한다.
+
 export default Say;
