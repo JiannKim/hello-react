@@ -1,9 +1,9 @@
 import './App.css';
-import Say from './3장_컴포넌트/Say';
+import EventPractice from './4장_이벤트핸들링/EventPractice';
 
 const App = () => {
-  // 3.4.2 함수형 컴포넌트에서 useState 사용하기(* Say.js 참조)
-  return <Say />;
+  // 4.2.1.2 App.js에서 EventPractice 렌더링
+  return <EventPractice />;
 };
 
 export default App;
