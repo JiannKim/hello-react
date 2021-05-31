@@ -1,13 +1,30 @@
 import { Component } from 'react';
-import IterationSample from './6장.컴포넌트_반복/IterationSample';
+import LifeCycleSample from './LifeCycleSample';
+import ErrorBoundary from './ErrorBoundary';
 import './App.css';
 
+// 랜덤 색상 생성
+function getRandomColor() {
+  return '#' + Math.floor(Math.random() * 1677215).toString(16); // 랜덤 값을 16진수로 변환
+}
+
 class App extends Component {
+  state = {
+    color: '#000',
+  };
+
+  handleClick = () => {
+    this.setState({
+      color: getRandomColor(),
+    });
+  };
   render() {
-    // 6.2.2 App 컴포에서 예제 컴포넌트 렌더링
     return (
-      <div>
-        <IterationSample />
+      <div id="app">
+        <button onClick={this.handleClick}>랜덤 색상</button>
+        <ErrorBoundary>
+          <LifeCycleSample color={this.state.color} />
+        </ErrorBoundary>
       </div>
     );
   }
