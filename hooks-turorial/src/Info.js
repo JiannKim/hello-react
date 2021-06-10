@@ -1,6 +1,7 @@
 import React, { useReducer } from 'react';
 
 function reducer(state, action) {
+  console.log(...state, 'tmtm');
   return {
     ...state,
     [action.name]: action.value,
@@ -9,13 +10,13 @@ function reducer(state, action) {
 
 const Info = () => {
   const [state, dispatch] = useReducer(reducer, { name: '', nickname: '' });
-  console.log(state);
+  console.log(state, '스테이트');
   const { name, nickname } = state;
   const onChange = (e) => {
     dispatch(e.target);
   };
   return (
-    <div>
+    <>
       <div>
         <input name="name" value={name} onChange={onChange} />
         <br />
@@ -29,7 +30,7 @@ const Info = () => {
           <b>닉네임:</b> {nickname}
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
