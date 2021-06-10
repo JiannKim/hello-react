@@ -1,11 +1,11 @@
 import './App.css';
-import Info from './Info';
+import Average from './Average';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Info />
+        <Average />
       </header>
     </div>
   );
