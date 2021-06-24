@@ -26,7 +26,7 @@ const Average = () => {
     setList(nextList);
     setNumber(''); // input값(박스안 내용) 초기화
   };
-
+  // useMemo는 memoization된 값을 반환한다. 모든 렌더링 시의 고비용 계산을 방지하게 해준다. 그리고 렌더링중에 실행되기 때문에 렌더링중에 하면 안되는일을 해당 함수 내에서 시키지않도록 주의하자
   const avg = useMemo(() => getAverage(list), [list]);
 
   return (
